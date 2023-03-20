@@ -7,14 +7,15 @@ from flask_login import login_user, current_user, login_required, logout_user
 loginSignup = Blueprint('loginSignup', __name__, template_folder = "templates/login_signup", static_folder="../../static")
 
 
+
 @loginSignup.route("/", methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
-@loginSignup.route("/home")
+@loginSignup.route("/api/home")
 @login_required
 def ok():
-    return "THIS IS HOME PAGE" + "--> <br>Login as User: " + current_user.name + " " + "<a href='/logout'>LOGOUT</a>"
+    return redirect("/home")
 
 
 @loginSignup.route("/login", methods=['GET', 'POST'])
@@ -32,7 +33,7 @@ def login():
             return redirect('/')
         
         login_user(user, remember=remember)
-        return redirect('/home')
+        return redirect('/api/home')
         
     return redirect('/')
 

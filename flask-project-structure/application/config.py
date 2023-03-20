@@ -1,5 +1,7 @@
 import os 
 
+Debian_SQL_URL = "mysql://nik:passisword@192.168.0.105/Project01"
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -9,12 +11,12 @@ class Config(object):
     
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('mysql://nik:passisword@192.168.0.109/Project01')
+    SQLALCHEMY_DATABASE_URI = os.environ.get(Debian_SQL_URL)
     
         
 class DevelopmentConfig(Config):
     ENV = "development"
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI="mysql://nik:passisword@192.168.0.109/Project01"
+    SQLALCHEMY_DATABASE_URI = Debian_SQL_URL
     

@@ -1,7 +1,7 @@
 from flask_login import LoginManager
 
 
-def test(app):
+def UserProfile(app):
     login_manager = LoginManager()
     login_manager.login_view = 'loginSignup.login'
     login_manager.init_app(app)

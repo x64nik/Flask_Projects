@@ -1,6 +1,7 @@
 from flask import Flask
 from database import database
-from apps.login_signup import  views, test
+from apps.login_signup import  views, UserProfile
+from apps.home import home
 
 
 def create_app():
@@ -9,11 +10,10 @@ def create_app():
     app.config.from_object('config.DevelopmentConfig')
     database.init_app(app)
     
-    test(app)
-    
-    
+    UserProfile(app)
     
     app.register_blueprint(views.loginSignup)
+    app.register_blueprint(home.home)
     # app.register_blueprint(app2, url_prefix="/app2")
     
     return app
