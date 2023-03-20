@@ -17,3 +17,21 @@ def home_route():
 def user_profile():
     return render_template('profile.html')
 
+
+@home.route("/editProfile", methods=['GET', 'POST'])
+@login_required
+def editProfile():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        firstname = request.form.get('firstname')
+        lastname = request.form.get('lastname')
+        orgname = request.form.get('orgname')
+        location = request.form.get('location')
+        email = request.form.get('email')
+        dob = request.form.get('dob')
+        
+        return username + " " + str(dob)
+    return "ok"
+
+
+
